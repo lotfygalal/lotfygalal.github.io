@@ -1,150 +1,157 @@
-/* styles.css */
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
 
 body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0d0d0d;
+  color: #ffffff;
   line-height: 1.6;
 }
 
-.container {
-  width: 90%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem 0;
-}
-
-h1, h2, h3 {
-  color: #111;
-}
-
-ul {
-  list-style: disc;
-  padding-left: 1.5rem;
-}
-
 a {
-  color: #0077cc;
+  color: #00ffd5;
   text-decoration: none;
+  transition: 0.3s;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: #fff;
 }
 
-.hero {
-  background-color: #1f1f1f;
-  color: white;
-  padding: 4rem 0;
-  text-align: center;
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
 }
 
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+/* Sections */
+.section {
+  padding: 80px 0;
 }
 
-.hero p {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-}
-
-.social-links a {
-  margin: 0 0.75rem;
-  font-weight: 600;
-  color: #00bcd4;
-}
-
-section {
-  padding: 3rem 0;
-  border-bottom: 1px solid #ddd;
-  background-color: #fff;
-}
-
-.projects .project {
-  margin-bottom: 2rem;
-}
-
-.resume .button {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: #0077cc;
-  color: white;
+h1, h2, h3 {
+  margin-bottom: 20px;
   font-weight: bold;
-  border-radius: 5px;
-  transition: background-color 0.3s;
 }
 
-.resume .button:hover {
-  background-color: #005fa3;
+h1 {
+  font-size: 3rem;
 }
 
-footer {
-  background-color: #1f1f1f;
-  color: white;
-  text-align: center;
-  padding: 1rem 0;
-  font-size: 0.9rem;
-}
-.profile-image {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-  border: 3px solid #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-.hidden {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+h2 {
+  font-size: 2rem;
 }
 
-.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* Section fade-in */
-.hidden {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Scroll to top button */
-.scroll-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background-color: #333;
-  color: white;
-  border: none;
+.subtitle {
   font-size: 1.5rem;
-  padding: 10px 14px;
+  color: #00ffd5;
+}
+
+.description {
+  font-size: 1.1rem;
+  margin: 15px 0;
+}
+
+.highlight {
+  color: #00ffd5;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #00ffd5;
+  color: #000;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #ffffff;
+  color: #000;
+}
+
+.btn.outline {
+  background: transparent;
+  border: 2px solid #00ffd5;
+  color: #00ffd5;
+}
+
+.btn.outline:hover {
+  background-color: #00ffd5;
+  color: #000;
+}
+
+/* Project Cards */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid #00ffd5;
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  background-color: #222;
+  transform: translateY(-5px);
+}
+
+/* Info List */
+.info-list,
+.contact-links {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.info-list li,
+.contact-links li {
+  margin-bottom: 8px;
+}
+
+/* Scroll to Top Button */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #00ffd5;
+  color: #000;
+  padding: 12px 16px;
+  font-size: 18px;
+  border: none;
   border-radius: 50%;
   cursor: pointer;
   display: none;
-  z-index: 999;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: 0.3s ease;
 }
 
-/* Cursor follow circle */
-.cursor-circle {
-  position: fixed;
-  width: 16px;
-  height: 16px;
-  border: 2px solid #ff4081;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
+#scrollTopBtn:hover {
+  background-color: #fff;
+  color: #000;
 }
 
+/* Fade In Animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
