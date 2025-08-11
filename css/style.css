@@ -731,10 +731,10 @@ body {
 
 
 .modal-image {
-    width: auto;
-    max-width: 95%;
+    width: 100%;
     height: auto;
-    max-height: 90vh;
+    max-width: 100%;
+    max-height: 100vh;
     object-fit: contain;
     border-radius: 10px;
     box-shadow: 0 0 25px rgba(255,255,255,0.6);
@@ -747,9 +747,7 @@ body {
     cursor: zoom-out; /* شكل الماوس عدسة تصغير */
 }
 
-.modal-image:hover {
-    transform: scale(1.02);
-}
+
 
 
 .modal-close {
@@ -920,7 +918,14 @@ body {
     }
 
     .modal-image {
-        height: 150px;
+        width: 100vw;
+        height: auto;
+        max-height: 100vh;
+        transition: transform 0.3s ease;
+        cursor: zoom-in;
+    }
+    .modal-image.zoomed {
+        cursor: zoom-out;
     }
 }
 

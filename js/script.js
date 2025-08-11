@@ -147,6 +147,29 @@ const nextBtn = document.getElementById('nextImage');
 let currentImages = [];
 let currentIndex = 0;
 let zoomedIn = false;
+let zoomedInMobile = false;
+let lastTap = 0;
+
+modalImage.addEventListener('touchend', function (e) {
+    const currentTime = new Date().getTime();
+    const tapLength = currentTime - lastTap;
+
+    if (tapLength < 300 && tapLength > 0) {
+        // Double tap detected
+        if (!zoomedInMobile) {
+            modalImage.style.transform = "scale(2)";
+            modalImage.classList.add('zoomed');
+            zoomedInMobile = true;
+        } else {
+            modalImage.style.transform = "scale(1)";
+            modalImage.classList.remove('zoomed');
+            zoomedInMobile = false;
+        }
+        e.preventDefault();
+    }
+    lastTap = currentTime;
+});
+
 
 modalImage.addEventListener('click', function (e) {
     const rect = modalImage.getBoundingClientRect();
@@ -168,7 +191,13 @@ modalImage.addEventListener('click', function (e) {
     }
 });
 
-
+function resetZoom() {
+    modalImage.style.transform = "scale(1)";
+    modalImage.style.transformOrigin = "center center";
+    modalImage.classList.remove('zoomed');
+    zoomedIn = false;         // للـ Desktop
+    zoomedInMobile = false;   // للموبايل
+}
 
 document.querySelectorAll('.open-modal').forEach(link => {
   link.addEventListener('click', (e) => {
@@ -185,22 +214,26 @@ document.querySelectorAll('.open-modal').forEach(link => {
 prevBtn.addEventListener('click', () => {
   currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
   modalImage.src = currentImages[currentIndex];
+  resetZoom();
 });
 
 nextBtn.addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % currentImages.length;
   modalImage.src = currentImages[currentIndex];
+  resetZoom();
 });
 
 modalClose.addEventListener('click', () => {
   modal.style.display = 'none';
   modal.classList.remove('open');
+  resetZoom();
 });
 
 window.addEventListener('click', (e) => {
   if (e.target === modal) {
     modal.style.display = 'none';
     modal.classList.remove('open');
+    resetZoom();
   }
 });
 
