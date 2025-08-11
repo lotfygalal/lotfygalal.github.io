@@ -927,6 +927,9 @@ body {
     .modal-image.zoomed {
         cursor: zoom-out;
     }
+    .skill-name {
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 480px) {
