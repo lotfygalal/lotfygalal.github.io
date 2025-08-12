@@ -11,12 +11,8 @@
 <!-- Badges -->
 <p align="center">
   <img src="https://img.shields.io/badge/Manual%20Testing-007ACC?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Automation%20Testing-FF6F00?style=for-the-badge&logo=selenium&logoColor=white">
   <img src="https://img.shields.io/badge/API%20Testing-FF6F00?style=for-the-badge&logo=postman&logoColor=white">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
   <img src="https://img.shields.io/badge/JavaScript-F7E018?style=for-the-badge&logo=javascript&logoColor=black">
-  <img src="https://img.shields.io/badge/SQL-336791?style=for-the-badge&logo=postgresql&logoColor=white">
   <img src="https://img.shields.io/badge/Git%20%26%20GitHub-F05032?style=for-the-badge&logo=git&logoColor=white">
   <img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white">
   <img src="https://img.shields.io/badge/Trello-0079BF?style=for-the-badge&logo=trello&logoColor=white">
@@ -43,16 +39,26 @@
 
 ---
 
+## 🛠️ Built With
+- 🎨 **HTML5**
+- 🎨 **CSS3**
+- ⚡ **JavaScript (Vanilla JS)**
+- ✨ **AOS Animation Library**
+- 🎯 **Font Awesome Icons**
+
+---
+
 ## 🚀 Features
-- Responsive design.
-- Smooth animations.
-- Interactive project gallery.
-- Zoomable images.
+- 📱 Fully responsive design for mobile & desktop.
+- 🎞️ Smooth scroll animations.
+- 🖼️ Interactive project gallery.
+- 🔍 Profile picture popup view.
+- 🔎 Lightbox gallery with zoom feature.
 
 ---
 
 ## 📧 Contact
-- **LinkedIn:** [linkedin.com/in/lotfy-gal-b8136015a](https://www.linkedin.com/in/lotfy-gal-b8136015a)  
+- **LinkedIn:** [linkedin.com/in/lotfy-gal-b8136015a](https://www.linkedin.com/in/lotfy-galal-b8136015a/)  
 - **GitHub:** [github.com/lotfygalal](https://github.com/lotfygalal)
 
 ---
