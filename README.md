@@ -85,36 +85,33 @@ The portfolio is fully responsive and optimized for:
 ---
 ## 🚀 Deployment
 **GitHub Pages** 
-Fork this repository
-
-Go to Settings > Pages
-
-Select source branch (main)
-
-Your site will be available at https://lotfygalal.github.io/
+- Fork this repository
+- Go to Settings > Pages
+- Select source branch (main)
+- Your site will be available at https://lotfygalal.github.io/
 
 ---
 ## Netlify
-1.Connect your GitHub repository
-2.Deploy with default settings
-3.Your site will be available at your Netlify URL
+- Connect your GitHub repository
+- Deploy with default settings
+- Your site will be available at your Netlify URL
 ---
 ## Vercel
-1.Import your GitHub repository
-2.Deploy with default settings
-3.Your site will be available at your Vercel URL
+- Import your GitHub repository
+- Deploy with default settings
+- Your site will be available at your Vercel URL
 ---
 ## 📱 Mobile Navigation
 The portfolio features a responsive mobile navigation:
-  -- Hamburger menu for mobile devices
-  -- Smooth slide-in sidebar
-  -- Touch-friendly navigation links
+  - Hamburger menu for mobile devices
+  - Smooth slide-in sidebar
+  - Touch-friendly navigation links
 
 ## ⚡ Performance Features
 Optimized Images - Compressed and properly sized
-  -- Smooth Animations - Hardware-accelerated CSS animations
-  -- Fast Loading - Minimal dependencies
-  -- SEO Friendly - Semantic HTML structure
+  - Smooth Animations - Hardware-accelerated CSS animations
+  - Fast Loading - Minimal dependencies
+  - SEO Friendly - Semantic HTML structure
 
 ## 🎯 Browser Compatibility
 ✅ Chrome (latest)
