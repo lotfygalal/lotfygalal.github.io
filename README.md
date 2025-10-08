@@ -89,7 +89,6 @@ The portfolio is fully responsive and optimized for:
 - Go to Settings > Pages
 - Select source branch (main)
 - Your site will be available at https://lotfygalal.github.io/
-
 ---
 ## Netlify
 - Connect your GitHub repository
