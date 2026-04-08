@@ -1,204 +1,574 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EYKHP8LGM4"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-EYKHP8LGM4');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-EYKHP8LGM4');
     </script>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lotfy Galal - Software Testing Portfolio</title>
+    <!-- Modern Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- ربط ملف CSS -->
+    <!-- رابط ملف CSS -->
     <link rel="stylesheet" href="css/style.css" />
     <!-- AOS Animation Library (اختياري) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <!-- كود clarity -->
     <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "stsbd2wf5v");
-</script>
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "stsbd2wf5v");
+    </script>
 </head>
+
 <body>
+    <div class="page-progress" id="pageProgress"></div>
+    <div class="site-orb site-orb-a"></div>
+    <div class="site-orb site-orb-b"></div>
+    <div class="site-grid"></div>
+    <div class="cursor-dot" data-cursor></div>
+    <div class="cursor-outline" data-cursor></div>
+
     <button class="mobile-menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
-    <button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
 
-    <div class="sidebar" id="sidebar">
-        <div class="profile-section">
-    <!-- استبدل رابط الصورة دي بصورة شخصية بتاعتك -->
-    <img src="assets/profile.jpg" alt="Lotfy Galal" class="profile-img" id="profileImage">
-
-<!-- Popup for profile image -->
-<div id="imagePopup" class="popup">
-  <span class="close-btn" id="closePopup">&times;</span>
-  <img class="popup-content" id="popupImage">
-</div>
-
-    <div class="profile-name">Lotfy Galal</div>
-            <div class="social-links">
-                <a href="mailto:lotfy.galal2@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
-                <a href="https://github.com/lotfygalal" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/lotfy-galal-b8136015a/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <header class="top-nav" id="sidebar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">My Portfolio<span class="logo-dot"></span></span>
             </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link" data-section="about">About</a></li>
+                <li class="nav-item"><a href="#skills" class="nav-link" data-section="skills">Expertise</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link" data-section="services">Services</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+            </ul>
+            <a href="https://drive.google.com/file/d/1otIokbhaBYKkL9IC7XXwsKgXqeWinc9G/view?usp=sharing" target="_blank"
+                class="nav-cv-btn"><i class="fas fa-download"></i> Get CV</a>
         </div>
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="#" class="nav-link active" data-section="home"><i class="fas fa-home"></i> Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link" data-section="about"><i class="fas fa-user"></i> About</a></li>
-            <li class="nav-item"><a href="#" class="nav-link" data-section="skills"><i class="fas fa-code"></i> Skills</a></li>
-            <li class="nav-item"><a href="#" class="nav-link" data-section="projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
-            <li class="nav-item"><a href="#" class="nav-link" data-section="services"><i class="fas fa-cogs"></i> Services</a></li>
-            <li class="nav-item"><a href="#" class="nav-link" data-section="contact"><i class="fas fa-envelope"></i> Contact</a></li>
-        </ul>
-    </div>
+    </header>
 
     <div class="main-content">
-        <section class="section home active" id="home" data-aos="fade-up">
+        <section class="section home active" id="home" data-aos="fade-in">
+            <div class="particles-bg" id="particles-bg"></div>
             <div class="home-content">
-                <div class="greeting">Hello, I'm</div>
-                <h1 class="name">Lotfy Galal</h1>
-                <h2 class="title" id="typewriter">Software Testing Engineer</h2>
-                <p class="description">
-                    No need for an expensive Agency 💸<br>
-                    I deliver Efficient Testing — on time and within budget 🚀
-                </p>
-                <div class="cta-buttons">
-                    <a href="#portfolio" class="btn btn-primary"><i class="fas fa-briefcase"></i> Trust me</a>
+                <div class="home-text">
+                    <div class="greeting">Hi, I'm </div>
+                    <h1 class="name">Lotfy Galal</h1>
+                    <h2 class="title" id="typewriter"></h2>
+                    <!--<p class="hero-description">
+                        I design reliable test coverage, uncover costly product risks early, and help teams ship with
+                        more confidence across web, mobile, and API products.
+                    </p>-->
+                    <div class="hero-highlights">
+                        <span class="highlight-chip"><i class="fas fa-shield-alt"></i> High Quality</span>
+                        <span class="highlight-chip"><i class="fas fa-mobile-screen-button"></i> Web + Mobile QA</span>
+                        <span class="highlight-chip"><i class="fas fa-bolt"></i> Fast defect reporting</span>
+                    </div>
+                    <div class="social-links-home">
+                        <a href="mailto:lotfy.galal2@gmail.com" class="social-link-home"><i
+                                class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/lotfygalal" class="social-link-home" target="_blank"><i
+                                class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/lotfy-galal-b8136015a/" class="social-link-home"
+                            target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <div class="cta-buttons">
+                        <a href="#projects" class="btn btn-primary btn-glow"><i class="fas fa-rocket"></i> Explore
+                            Work</a>
+                    </div>
+                </div>
+                <div class="home-image-container" data-aos="zoom-in" data-aos-duration="1000">
+                    <div class="profile-scene">
+                        <div class="orbit-ring orbit-ring-lg"></div>
+                        <div class="orbit-ring orbit-ring-sm"></div>
+                        <div class="profile-image-shell">
+                            <img src="assets/profile3.png" alt="Lotfy Galal" class="profile-img-header"
+                                id="profileImage">
+                        </div>
+                        <div class="skill-orbit orbit-lg skill-jira">
+                            <a href="#" class="skill-badge skill-link" data-go-section="skills"
+                                aria-label="Open Expertise: Jira"><img src="assets/jira-original.svg" alt="Jira"></a>
+                        </div>
+                        <div class="skill-orbit orbit-sm skill-slack">
+                            <a href="#" class="skill-badge skill-link" data-go-section="skills"
+                                aria-label="Open Expertise: Slack"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/slack/slack-original.svg"
+                                    alt="Slack"></a>
+                        </div>
+                        <div class="skill-orbit orbit-lg skill-asana">
+                            <a href="#" class="skill-badge skill-link" data-go-section="skills"
+                                aria-label="Open Expertise: Asana"><img
+                                    src="https://images.seeklogo.com/logo-png/32/2/asana-logo-png_seeklogo-326138.png"
+                                    alt="Asana"></a>
+                        </div>
+                        <div class="skill-orbit orbit-sm skill-devops">
+                            <a href="#" class="skill-badge skill-link" data-go-section="skills"
+                                aria-label="Open Expertise: DevOps"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg"
+                                    alt="DevOps"></a>
+                        </div>
+                        <div class="skill-orbit orbit-lg skill-clickup">
+                            <a href="#" class="skill-badge skill-link" data-go-section="skills"
+                                aria-label="Open Expertise: ClickUp"><img
+                                    src="https://www.google.com/s2/favicons?domain=clickup.com&sz=128"
+                                    alt="ClickUp"></a>
+                        </div>
+                        <div class="skill-orbit orbit-sm skill-postman">
+                            <a href="#" class="skill-badge skill-link" data-go-section="skills"
+                                aria-label="Open Expertise: Postman"><img src="assets/postman-original.svg"
+                                    alt="Postman"></a>
+                        </div>
+                        <div class="skill-orbit orbit-lg skill-jmeter">
+                            <a href="#" class="skill-badge skill-link" data-go-section="skills"
+                                aria-label="Open Expertise: JMeter"><img src="assets/jmeter.png" alt="JMeter"></a>
+                        </div>
+                        <div class="skill-orbit orbit-sm skill-figma">
+                            <a href="#" class="skill-badge skill-link" data-go-section="skills"
+                                aria-label="Open Expertise: Figma"><img src="assets/figma-original.svg" alt="Figma"></a>
+                        </div>
+                        <div class="skill-orbit orbit-lg skill-java">
+                            <a href="#" class="skill-badge skill-link" data-go-section="skills"
+                                aria-label="Open Expertise: Java"><img src="assets/java.png" alt="Java"></a>
+                        </div>
+                        <div class="skill-orbit orbit-sm skill-c">
+                            <a href="#" class="skill-badge skill-link" data-go-section="skills"
+                                aria-label="Open Expertise: C"><img src="assets/c.svg" alt="C"></a>
+                        </div>
+                        <div class="skill-orbit orbit-lg skill-git">
+                            <a href="#" class="skill-badge skill-link" data-go-section="skills"
+                                aria-label="Open Expertise: Git"><img src="assets/git-original.svg" alt="Git"></a>
+                        </div>
+                        <div class="skill-orbit orbit-sm skill-antigravity">
+                            <a href="#" class="skill-badge skill-link" data-go-section="skills"
+                                aria-label="Open Expertise: Antigravity"><img
+                                    src="https://www.google.com/s2/favicons?domain=antigravity.google&sz=128"
+                                    alt="Antigravity"></a>
+                        </div>
+                        <div class="skill-orbit orbit-lg skill-comet">
+                            <a href="#" class="skill-badge skill-link" data-go-section="skills"
+                                aria-label="Open Expertise: Comet"><img src="assets/Comet.png" alt="Comet"></a>
+                        </div>
+                        <div class="skill-orbit orbit-sm skill-selenium">
+                            <a href="#" class="skill-badge skill-link" data-go-section="skills"
+                                aria-label="Open Expertise: Selenium"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/selenium/selenium-original.svg"
+                                    alt="Selenium"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="home-proof-strip glass-card">
+                <div class="home-proof-item">
+                    <strong>2+</strong>
+                    <span>Years of experience</span>
+                </div>
+                <div class="home-proof-item">
+                    <strong><i class="fas fa-check-circle" style="color: var(--accent-2);"></i></strong>
+                    <span>Providing Enhancements</span>
+                </div>
+                <div class="home-proof-item">
+                    <strong><i class="fas fa-check-circle" style="color: var(--accent-2);"></i></strong>
+                    <span>Multi-Testing Methodologies</span>
+                </div>
+                <div class="home-proof-item">
+                    <strong><i class="fas fa-check-circle" style="color: var(--accent-2);"></i></strong>
+                    <span>Multi-tool proficiency</span>
                 </div>
             </div>
         </section>
 
         <section class="section about" id="about" data-aos="fade-up">
+            <div class="section-bg-element bg-element-1"></div>
             <div class="about-content">
-                <h2 class="section-title">About Me</h2>
+                <div class="section-header">
+
+                    <div class="title-underline"></div>
+                </div>
+                <!--
                 <div class="stats-grid">
-                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-card glass-card" data-tilt data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-icon"><i class="fas fa-laptop-code"></i></div>
                         <div class="stat-number">200+</div>
                         <div class="stat-label">Test Scenarios</div>
                     </div>
-                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-card glass-card" data-tilt data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-icon"><i class="fas fa-clipboard-check"></i></div>
                         <div class="stat-number">150+</div>
                         <div class="stat-label">Test Cases</div>
                     </div>
-                    <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-card glass-card" data-tilt data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-icon"><i class="fas fa-bug"></i></div>
                         <div class="stat-number">80+</div>
                         <div class="stat-label">Bug Reports</div>
                     </div>
-                    <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-card glass-card" data-tilt data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
                         <div class="stat-number">110+</div>
                         <div class="stat-label">User Stories</div>
                     </div>
-                    <div class="stat-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="stat-card glass-card" data-tilt data-aos="fade-up" data-aos-delay="500">
+                        <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
                         <div class="stat-number">25+</div>
                         <div class="stat-label">Epics</div>
                     </div>
+                </div>-->
+                <div class="about-text glass-card">
+                    <p>Software Testing Engineer with experience in testing web and mobile applications on Android, iOS
+                        and platforms. Specialized in Manual and Automation Testing using Selenium, Maven, TestNG, and
+                        POM design pattern. Strong experience in API testing with Postman and test management using
+                        Jira, Asana, and Slack. Proven ability to design test scenarios, execute test cases, report
+                        defects,
+                        and ensure product quality across real-world projects. Experienced in testing environments and
+                        collaborative Agile workflows. Ready to relocate and start immediately.</p>
                 </div>
-                <div class="about-text">
-                    <p>I'm a Software Tester with a background in Mechatronics and Embedded Systems at NTI & HTI. I apply my coding knowledge to identify bugs and improve app testing.I have tested real mobile apps on Android and IOS as a freelancer, created test cases from design files and documents, and work as a team using Agile and sprints.Not only that, but i'm a skilled in testing websites, mobile apps, and APIs. Open to new opportunities and ready to relocate immediately.</p>
+
+                <div class="resume-grid" style="margin-top: 5rem;">
+                    <!-- Education Column -->
+                    <div class="resume-column">
+                        <h3 class="timeline-group-title"><i class="fas fa-graduation-cap"></i> Education</h3>
+                        <div class="timeline">
+                            <!-- Event 1 -->
+                            <div class="timeline-item" data-aos="fade-up">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content glass-card border-accent">
+                                    <div class="timeline-date"><i class="fas fa-calendar-alt"></i> Dec 2022 - Apr 2023
+                                    </div>
+                                    <h4 class="timeline-title">Automotive Embedded Sys. Scholarship</h4>
+                                    <div class="timeline-subtitle">National Telecommunication Institute (NTI)</div>
+                                    <p class="timeline-desc">
+                                        Graduation project: ADAS with V2C Communication, Grade: (Excellent A) and Score:
+                                        88%.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Event 2 -->
+                            <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content glass-card border-accent">
+                                    <div class="timeline-date"><i class="fas fa-calendar-alt"></i> Oct 2015 – Oct 2020
+                                    </div>
+                                    <h4 class="timeline-title">Bachelor’s Degree in Mechatronics Engineering</h4>
+                                    <div class="timeline-subtitle">Higher Technological Institute (HTI)</div>
+                                    <p class="timeline-desc">
+                                        Graduation project: Full CNC Router Machine, Grade: (Excellent A), and GPA: 2.9
+                                        (Very Good).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience Column -->
+                    <div class="resume-column">
+                        <h3 class="timeline-group-title"><i class="fas fa-briefcase"></i> Experience</h3>
+                        <div class="timeline">
+                            <!-- Event 1 -->
+                            <div class="timeline-item" data-aos="fade-up">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content glass-card border-accent-2">
+                                    <div class="timeline-date"><i class="fas fa-calendar-alt"></i> May 2024 - Current
+                                    </div>
+                                    <h4 class="timeline-title">Software Testing Engineer (Remote)</h4>
+                                    <div class="timeline-subtitle">Pemo Company</div>
+                                </div>
+                            </div>
+                            <!-- Event 2 -->
+                            <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content glass-card border-accent-2">
+                                    <div class="timeline-date"><i class="fas fa-calendar-alt"></i> Apr 2023 - Apr 2024
+                                    </div>
+                                    <h4 class="timeline-title">Embedded Sys. Engineer (On-site)</h4>
+                                    <div class="timeline-subtitle">Schaduf Company</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- 
-                <a href="https://drive.google.com/file/d/1otIokbhaBYKkL9IC7XXwsKgXqeWinc9G/view?usp=sharing" class="btn btn-primary" target="_blank" rel="noopener noreferrer"><i class="fas fa-download"></i> Download CV</a>
-            
-                -->
-                    
+
             </div>
         </section>
 
         <section class="section skills" id="skills" data-aos="fade-up">
+            <div class="section-bg-element bg-element-2"></div>
             <div class="skills-content">
-                <h2 class="section-title">My Skills</h2>
-                <div class="skills-grid-container">
-                    
-  <div class="skill-item"><img src="/assets/c.svg" alt="C Logo" class="skill-icon">language</div>
-  <div class="skill-item"><img src="/assets/embeddedc-original.svg" alt="Embedded C Logo" class="skill-icon">Embedded C</div>
-  <div class="skill-item"><img src="/assets/java.png" alt="Java Logo" class="skill-icon">Java (OOP)</div>
-  <div class="skill-item"><img src="/assets/java-script.png" alt="JavaScript Logo" class="skill-icon">JavaScript</div>
-  <div class="skill-item"><img src="/assets/python-original.svg" alt="Python Logo" class="skill-icon">Python</div>
-  <div class="skill-item"><img src="/assets/jira-original.svg" alt="Jira Logo" class="skill-icon">Jira</div>
-  <div class="skill-item"><img src="/assets/trello-plain.svg" alt="Trello Logo" class="skill-icon">Trello</div>
-  <div class="skill-item"><img src="/assets/zephyr.png" alt="Zephyr Logo" class="skill-icon">Zephyr</div>
-  <div class="skill-item"><img src="/assets/xray.png" alt="Xray Logo" class="skill-icon">Xray</div>
-  <div class="skill-item"><img src="/assets/postman-original.svg" alt="Postman Logo" class="skill-icon">Postman</div>
-  <div class="skill-item"><img src="/assets/intellij-original.svg" alt="IntelliJ Logo" class="skill-icon">IntelliJ</div>
-  <div class="skill-item"><img src="/assets/jmeter.png" alt="JMeter Logo" class="skill-icon">JMeter</div>
-  <div class="skill-item"><img src="/assets/git-original.svg" alt="Git Logo" class="skill-icon">Git</div>
-  <div class="skill-item"><img src="/assets/Proteus Logo.png" alt="Proteus Logo" class="skill-icon">Proteus</div>
-  <div class="skill-item"><img src="/assets/Microchip.png" alt="Microchip Studio Logo" class="skill-icon">Microchip St.</div>
-  <div class="skill-item"><img src="/assets/figma-original.svg" alt="Figma Logo" class="skill-icon">Figma</div>
-  <div class="skill-item"><img src="/assets/vscode-original.svg" alt="VS Code Logo" class="skill-icon">VS Code</div>
-  <div class="skill-item"><img src="/assets/eclipse-original.svg" alt="Eclipse Logo" class="skill-icon">Eclipse</div>
-  <div class="skill-item"><img src="/assets/matlab-original.svg" alt="Matlab Logo" class="skill-icon">Matlab</div>
-  <div class="skill-item"><img src="/assets/codeblocks.png" alt="CodeBlocks Logo" class="skill-icon">CodeBlocks</div>
-  <div class="skill-item"><img src="/assets/canva-original.svg" alt="Canva Logo" class="skill-icon">Canva</div>
-  <div class="skill-item"><img src="/assets/photoshop-plain.svg" alt="Adobe Photoshop Logo" class="skill-icon">Photoshop</div>
-  <div class="skill-item"><img src="/assets/illustrator-plain.svg" alt="Adobe Illustrator Logo" class="skill-icon">Illustrator</div>
-  <div class="skill-item"><img src="/assets/microsoft.png" alt="Microsoft Logo" class="skill-icon">Microsoft Tools</div>
-</div>
+                <div class="section-header">
+                    <div class="title-underline"></div>
+                </div>
+                <div class="skills-category-container">
+
+                    <div class="skills-category" data-aos="fade-up">
+                        <h3 class="category-title"><i class="fas fa-check-circle"></i> Testing Technologies</h3>
+                        <div class="category-tags">
+                            <span class="skill-tag"><i class="fas fa-bug" style="color: #ff6b6b;"></i> Bug
+                                Reporting</span>
+                            <span class="skill-tag"><i class="fas fa-clipboard-list" style="color: #667eea;"></i> Test
+                                Cases</span>
+                            <span class="skill-tag"><i class="fas fa-user-check" style="color: #00ff88;"></i> User
+                                Story</span>
+                            <span class="skill-tag"><i class="fas fa-sync" style="color: #f093fb;"></i>
+                                Regression</span>
+                            <span class="skill-tag"><i class="fas fa-tasks" style="color: #667eea;"></i> STLC</span>
+                            <span class="skill-tag"><i class="fas fa-code-branch" style="color: #764ba2;"></i>
+                                SDLC</span>
+                            <span class="skill-tag"><i class="fas fa-running" style="color: #ff9a9e;"></i> Agile</span>
+                            <span class="skill-tag"><i class="fas fa-network-wired" style="color: #00ff88;"></i>
+                                API</span>
+                            <span class="skill-tag"><i class="fas fa-robot" style="color: #667eea;"></i>
+                                Automation</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="category-title"><i class="fas fa-code"></i> Programming & Scripting</h3>
+                        <div class="category-tags">
+                            <span class="skill-tag"><img src="assets/java.png" class="skill-tag-icon" alt="Java"> Java
+                                (OOP)</span>
+                            <span class="skill-tag"><img src="assets/c.svg" class="skill-tag-icon" alt="C"> C</span>
+                            <span class="skill-tag"><img src="assets/embeddedc-original.svg" class="skill-tag-icon"
+                                    alt="Embedded C"> Embedded C</span>
+                            <span class="skill-tag"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg"
+                                    class="skill-tag-icon" alt="SQL"> SQL</span>
+                            <span class="skill-tag"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                                    class="skill-tag-icon" alt="HTML"> HTML</span>
+                            <span class="skill-tag"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+                                    class="skill-tag-icon" alt="CSS"> CSS</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="category-title"><i class="fas fa-tasks"></i> Management Tools</h3>
+                        <div class="category-tags">
+                            <span class="skill-tag"><img src="assets/jira-original.svg" class="skill-tag-icon"
+                                    alt="Jira"> Jira</span>
+                            <span class="skill-tag"><img src="assets/trello-plain.svg" class="skill-tag-icon"
+                                    alt="Trello"> Trello</span>
+                            <span class="skill-tag"><img src="assets/zephyr.png" class="skill-tag-icon" alt="Zephyr">
+                                Zephyr</span>
+                            <span class="skill-tag"><img src="assets/xray.png" class="skill-tag-icon" alt="X-ray">
+                                X-ray</span>
+                            <span class="skill-tag"><i class="fas fa-users-cog" style="color: #667eea;"></i>
+                                Scrum</span>
+                            <span class="skill-tag"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg"
+                                    class="skill-tag-icon" alt="Azure"> Azure</span>
+                            <span class="skill-tag"><img src="assets/microsoft.png" class="skill-tag-icon"
+                                    alt="Microsoft"> Microsoft tools</span>
+                            <span class="skill-tag"><img
+                                    src="https://images.seeklogo.com/logo-png/32/2/asana-logo-png_seeklogo-326138.png"
+                                    class="skill-tag-icon" alt="Asana"> Asana</span>
+                            <span class="skill-tag"><img
+                                    src="https://www.google.com/s2/favicons?domain=clickup.com&sz=128"
+                                    class="skill-tag-icon" alt="ClickUp"> ClickUp</span>
+                            <span class="skill-tag"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/slack/slack-original.svg"
+                                    class="skill-tag-icon" alt="Slack"> Slack</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="category-title"><i class="fas fa-laptop-code"></i> Developer Tools</h3>
+                        <div class="category-tags">
+                            <span class="skill-tag"><img
+                                    src="https://www.google.com/s2/favicons?domain=antigravity.google&sz=128"
+                                    class="skill-tag-icon" alt="Antigravity"> Antigravity</span>
+                            <span class="skill-tag"><img src="assets/Comet.png" class="skill-tag-icon" alt="Comet">
+                                Comet</span>
+                            <span class="skill-tag"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/selenium/selenium-original.svg"
+                                    class="skill-tag-icon" alt="Selenium"> Selenium</span>
+                            <span class="skill-tag"><img src="assets/postman-original.svg" class="skill-tag-icon"
+                                    alt="Postman"> Postman</span>
+                            <span class="skill-tag"><img src="assets/intellij-original.svg" class="skill-tag-icon"
+                                    alt="IntelliJ"> IntelliJ</span>
+                            <span class="skill-tag"><img src="assets/jmeter.png" class="skill-tag-icon" alt="JMeter">
+                                JMeter</span>
+                            <span class="skill-tag"><img src="assets/git-original.svg" class="skill-tag-icon" alt="Git">
+                                Git</span>
+                            <span class="skill-tag"><img src="assets/Proteus Logo.png" class="skill-tag-icon"
+                                    alt="Proteus"> Proteus</span>
+                            <span class="skill-tag"><img src="assets/Microchip.png" class="skill-tag-icon"
+                                    alt="Microchip"> Microchip Studio</span>
+                            <span class="skill-tag"><img src="assets/vscode-original.svg" class="skill-tag-icon"
+                                    alt="VS Code"> VS Code</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category" data-aos="fade-up" data-aos-delay="400">
+                        <h3 class="category-title"><i class="fas fa-pencil-ruler"></i> Editor Tools</h3>
+                        <div class="category-tags">
+                            <span class="skill-tag"><img src="assets/figma-original.svg" class="skill-tag-icon"
+                                    alt="Figma"> Figma</span>
+                            <span class="skill-tag"><img src="assets/canva-original.svg" class="skill-tag-icon"
+                                    alt="Canva"> Canva</span>
+                            <span class="skill-tag"><img src="assets/photoshop-plain.svg" class="skill-tag-icon"
+                                    alt="Photoshop"> Adobe Photoshop</span>
+                            <span class="skill-tag"><img src="assets/illustrator-plain.svg" class="skill-tag-icon"
+                                    alt="Illustrator"> Illustrator</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category" data-aos="fade-up" data-aos-delay="500">
+                        <h3 class="category-title"><i class="fas fa-users"></i> Soft Skills & Languages</h3>
+                        <div class="category-tags">
+                            <span class="skill-tag"><i class="fas fa-comments" style="color: #00ff88;"></i>
+                                Communication</span>
+                            <span class="skill-tag"><i class="fas fa-hands-helping" style="color: #667eea;"></i>
+                                Teamwork</span>
+                            <span class="skill-tag"><i class="fas fa-search" style="color: #f093fb;"></i> Information
+                                Gathering</span>
+                            <span class="skill-tag"><i class="fas fa-brain" style="color: #ff9a9e;"></i> Quick
+                                Learner</span>
+                            <span class="skill-tag"><i class="fas fa-shield-alt" style="color: #667eea;"></i>
+                                Responsible</span>
+                            <span class="skill-tag"><i class="fas fa-puzzle-piece" style="color: #ff6b6b;"></i> Problem
+                                Solving</span>
+                            <span class="skill-tag"><i class="fas fa-globe-africa" style="color: #00ff88;"></i> Arabic
+                                (Native)</span>
+                            <span class="skill-tag"><i class="fas fa-globe-americas" style="color: #667eea;"></i>
+                                English (Very Good)</span>
+                            <span class="skill-tag"><i class="fas fa-globe-europe" style="color: #f093fb;"></i> German
+                                (Basic)</span>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </section>
 
         <section class="section projects" id="projects" data-aos="fade-up">
+            <div class="section-bg-element bg-element-3"></div>
             <div class="projects-content">
-                <h2 class="section-title">My Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card" data-project-id="1" data-aos="fade-up">
-                        <!-- استبدل رابط الصورة دي بصورة الكفر بتاعتك -->
-                        <img src="/assets/Nethar app.png" alt="Nethar Mobile App Testing" class="project-image">
-                        <div class="project-content">
-                            <h3 class="project-title">Nethar Audiobook App Testing</h3>
-                            <p class="project-description">
-                                Manual testing for a real production mobile application published on Google Play and App Store. Reported 60+ critical, high, and medium severity bug reports across Android and iOS platforms.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Android</span>
-                                <span class="tech-tag">iOS</span>
-                                <span class="tech-tag">Bug Reporting</span>
-                                <span class="tech-tag">Regression Testing</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link open-modal"data-images="/assets/Nethar 1.png,/assets/Nethar 2.png,/assets/Nethar 3.png,/assets/Nethar 4.png"><i class="fas fa-eye"></i> See My Work</a>
-                                                                                        <!-- استبدل الروابط المؤقتة بالصور الفعلية من جهازك -->
+                <div class="section-header">
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card" data-project-id="2" data-aos="fade-up" data-aos-delay="100">
-                        <!-- استبدل رابط الصورة دي بصورة الكفر بتاعتك -->
-                        <img src="/assets/Gazara.png" alt="Gazra Web & Mobile Testing" class="project-image">
+                    <div class="title-underline"></div>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card" data-project-id="6" data-aos="fade-up" data-aos-delay="50">
+                        <img src="assets/bugzymain.png" alt="Prototype Project" class="project-image"
+                            style="object-fit: contain; background: #fff; padding: 2rem;">
                         <div class="project-content">
-                            <h3 class="project-title">Gazra Grocery Store Testing</h3>
+                            <h3 class="project-title">Bugzy | Bug Tracking Platform.</h3>
                             <p class="project-description">
-                                Complete testing project covering admin panel, website, and mobile application. Contributed to 15+ epics and 130+ user stories using Agile methodology with Jira and Trello.
+                                Transformed the basic tool into a complete bug tracking and test management
+                                platform, executing E2E testing across DEV, UAT, Beta, and Prod environments while using
+                                AI-driven tools for Automation and fast Regression.
                             </p>
                             <div class="project-tech">
+                                <span class="tech-tag">E2E</span>
+                                <span class="tech-tag">Web</span>
+                                <span class="tech-tag">API</span>
+                                <span class="tech-tag">DEV</span>
+                                <span class="tech-tag">UAT</span>
+                                <span class="tech-tag">BETA</span>
+                                <span class="tech-tag">PROD</span>
                                 <span class="tech-tag">Agile</span>
                                 <span class="tech-tag">Jira</span>
                                 <span class="tech-tag">Epic</span>
                                 <span class="tech-tag">Story</span>
-                                <span class="tech-tag">SRS</span>
-                                <span class="tech-tag">Test Cases</span>
+                                <span class="tech-tag">Test Plan</span>
+                                <span class="tech-tag">smoke</span>
+                                <span class="tech-tag">Regression</span>
+                                <span class="tech-tag">AI-Automation</span>
+                                <span class="tech-tag">Antigravity</span>
+                                <span class="tech-tag">Comet</span>
                             </div>
                             <div class="project-links">
-                                <a href="#" class="project-link open-modal"data-images="/assets/gazara 1.png,/assets/gazara 2.png,/assets/gazara 3.png,/assets/gazara 4.png,/assets/gazara 5.png"><i class="fas fa-eye"></i> See My Work</a>
-                                                                                        <!-- استبدل الروابط المؤقتة بالصور الفعلية من جهازك -->
+                                <a href="#" class="project-link open-modal"
+                                    data-images="assets/bugzyC.png,assets/bugzysprintsC.png,assets/bugzychartC.png,assets/bugzyvalidationC.png,assets/bugzydefect reportC.png,assets/gazara-6.png,assets/api 3.png,assets/bugzystory.gif"><i
+                                        class="fas fa-eye"></i> See My Work</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-project-id="1" data-aos="fade-up">
+                        <img src="assets/Nethar app.png" alt="Nethar Mobile App Testing" class="project-image">
+                        <div class="project-content">
+                            <h3 class="project-title">Nethar Audiobook App Testing</h3>
+                            <p class="project-description">
+                                Manual testing for a real production mobile application published on Google Play and App
+                                Store. Reported 60+ critical, high, and medium severity bug reports across Android and
+                                iOS platforms.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">E2E</span>
+                                <span class="tech-tag">Android</span>
+                                <span class="tech-tag">IOS</span>
+                                <span class="tech-tag">PROD</span>
+                                <span class="tech-tag">Agile</span>
+                                <span class="tech-tag">Jira</span>
+                                <span class="tech-tag">Test Cases</span>
+                                <span class="tech-tag">Test Plan</span>
+                                <span class="tech-tag">Bug Report</span>
+                                <span class="tech-tag">smoke</span>
+                                <span class="tech-tag">Regression</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link open-modal"
+                                    data-images="assets/Nethar 1.png,assets/Nethar 2.png,assets/Nethar 3.png,assets/Nethar 4.png"><i
+                                        class="fas fa-eye"></i> See My Work</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-project-id="2" data-aos="fade-up" data-aos-delay="100">
+                        <img src="assets/Gazara.png" alt="Gazra Web & Mobile Testing" class="project-image">
+                        <div class="project-content">
+                            <h3 class="project-title">Gazara | E-commerce Platform</h3>
+                            <p class="project-description">
+                                Complete testing project covering admin panel, website, and mobile application.
+                                Contributed to 15+ epics and 130+ user stories using Agile methodology with Jira and
+                                Trello.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">E2E</span>
+                                <span class="tech-tag">Web</span>
+                                <span class="tech-tag">Android</span>
+                                <span class="tech-tag">IOS</span>
+                                <span class="tech-tag">Admin Panel</span>
+                                <span class="tech-tag">Agile</span>
+                                <span class="tech-tag">Jira</span>
+                                <span class="tech-tag">Trello</span>
+                                <span class="tech-tag">SRS</span>
+                                <span class="tech-tag">Epic</span>
+                                <span class="tech-tag">Story</span>
+                                <span class="tech-tag">Test Plan</span>
+                                <span class="tech-tag">Test Scenarios</span>
+                                <span class="tech-tag">Test Cases</span>
+                                <span class="tech-tag">Bug Report</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link open-modal"
+                                    data-images="assets/gazara-6.png,assets/gazara-1.png,assets/gazara-2.png,assets/gazara-3.png,assets/gazara-4.png,assets/gazara-5.png"><i
+                                        class="fas fa-eye"></i> See My Work</a>
                             </div>
                         </div>
                     </div>
                     <div class="project-card" data-project-id="3" data-aos="fade-up" data-aos-delay="200">
-                        <!-- استبدل رابط الصورة دي بصورة الكفر بتاعتك -->
-                        <img src="/assets/API.png" alt="API Testing - Swagger Pet Store" class="project-image">
+                        <img src="assets/API.png" alt="API Testing - Swagger Pet Store" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">API Testing - Swagger Pet Store</h3>
                             <p class="project-description">
-                                API testing using Postman, focusing on CRUD operations. Validated request and response structures, HTTP codes, and error handling based on Swagger.
+                                API testing using Postman, focusing on CRUD operations. Validated request and response
+                                structures, HTTP codes, and error handling based on Swagger.
                             </p>
                             <div class="project-tech">
                                 <span class="tech-tag">Postman</span>
@@ -206,140 +576,206 @@
                                 <span class="tech-tag">API</span>
                                 <span class="tech-tag">CRUD</span>
                                 <span class="tech-tag">JSON</span>
+                                <span class="tech-tag">Java</span>
                             </div>
                             <div class="project-links">
-                                <a href="#" class="project-link open-modal"data-images="/assets/api 1.png,/assets/api 2.png"><i class="fas fa-eye"></i> See My Work</a>
-                                                                                        <!-- استبدل الروابط المؤقتة بالصور الفعلية من جهازك -->
+                                <a href="#" class="project-link open-modal"
+                                    data-images="assets/api 3.png,assets/api 1.png,assets/api 2.png"><i
+                                        class="fas fa-eye"></i> See My
+                                    Work</a>
                             </div>
                         </div>
                     </div>
                     <div class="project-card" data-project-id="4" data-aos="fade-up" data-aos-delay="300">
-                        <!-- استبدل رابط الصورة دي بصورة الكفر بتاعتك -->
-                        <img src="/assets/epic game.jpg" alt="Epic Games Platform Testing" class="project-image">
+                        <img src="assets/epic game.jpg" alt="Epic Games Platform Testing" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">Epic Games Platform Testing</h3>
                             <p class="project-description">
-                                Generated detailed test scenarios for Epic Games platform features including user registration, login, search functionality, and checkout process. Focused on usability and edge cases.
+                                Generated detailed test scenarios for Epic Games platform features including user
+                                registration, login, search functionality, and checkout process. Focused on usability
+                                and edge cases.
                             </p>
                             <div class="project-tech">
-                                <span class="tech-tag">E2E Test Scenarios</span>  
+                                <span class="tech-tag">E2E Test Scenarios</span>
                                 <span class="tech-tag">Test Plan</span>
+                                <span class="tech-tag">Test Cases</span>
+                                <span class="tech-tag">Bug Report</span>
                                 <span class="tech-tag">User Flow</span>
                             </div>
                             <div class="project-links">
-                                <a href="#" class="project-link open-modal"data-images="/assets/epic 1.png,/assets/epic 2.png,/assets/epic 3.png,/assets/epic 4.png,/assets/epic 5.png,/assets/epic 6.png"><i class="fas fa-eye"></i> See My Work</a>
-                                                                                        <!-- استبدل الروابط المؤقتة بالصور الفعلية من جهازك -->
+                                <a href="#" class="project-link open-modal"
+                                    data-images="assets/epic 1.png,assets/epic 2.png,assets/epic 3.png,assets/epic 4.png,assets/epic 5.png,assets/epic 6.png"><i
+                                        class="fas fa-eye"></i> See My Work</a>
                             </div>
                         </div>
                     </div>
                     <div class="project-card" data-project-id="5" data-aos="fade-up" data-aos-delay="400">
-                        <!-- استبدل رابط الصورة دي بصورة الكفر بتاعتك -->
-                        <img src="/assets/HR managment sy.jpg" alt="HR Management System Testing" class="project-image">
+                        <img src="assets/HR managment sy.jpg" alt="HR Management System Testing" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">HR Management System Testing</h3>
                             <p class="project-description">
-                                Test cases based on Figma designs only covering login, dashboard, employee management, leave requests, and role-based access control for a complete HR system.
+                                Test cases based on Figma designs only covering login, dashboard, employee management,
+                                leave requests, and role-based access control for a complete HR system.
                             </p>
                             <div class="project-tech">
                                 <span class="tech-tag">Figma Analysis</span>
+                                <span class="tech-tag">Test Plan</span>
+                                <span class="tech-tag">Test Scenarios</span>
                                 <span class="tech-tag">Test Cases</span>
+                                <span class="tech-tag">Bug Report</span>
+                                <span class="tech-tag">User Flow</span>
                                 <span class="tech-tag">UI/UX Testing</span>
+                                <span class="tech-tag">Role-based Testing</span>
                             </div>
                             <div class="project-links">
-                                <a href="#" class="project-link open-modal"data-images="/assets/HR 1.png,/assets/HR 2.png,/assets/HR 3.png,/assets/HR 4.png"><i class="fas fa-eye"></i> See My Work</a>
-                                                                                        <!-- استبدل الروابط المؤقتة بالصور الفعلية من جهازك -->
+                                <a href="#" class="project-link open-modal"
+                                    data-images="assets/HR 1.png,assets/HR 2.png,assets/HR 3.png,assets/HR 4.png"><i
+                                        class="fas fa-eye"></i> See My Work</a>
                             </div>
                         </div>
                     </div>
-
-                    <!--
-                    <div class="project-card" data-project-id="6" data-aos="fade-up" data-aos-delay="500">
-                        <img src="https://images.unsplash.com/photo-1516321310764-8d8c9461d736?auto=format&fit=crop&w=800&q=60" alt="Automation Testing Framework" class="project-image">
-                        <div class="project-content">
-                            <h3 class="project-title">Automation Testing Framework</h3>
-                            <p class="project-description">
-                                Built complete automation framework using Java, Selenium WebDriver, TestNG, and Page Object Model (POM). Implemented with Cucumber and comprehensive reporting tools.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Java</span>
-                                <span class="tech-tag">Selenium</span>
-                                <span class="tech-tag">TestNG</span>
-                                <span class="tech-tag">Cucumber</span>
-                                <span class="tech-tag">POM</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link open-modal"><i class="fas fa-eye"></i> See My Work</a>
-                            
-
-                            </div>
-                        </div>
-                    </div>
-                    -->
                 </div>
             </div>
         </section>
 
         <section class="section services" id="services" data-aos="fade-up">
-            <div class="skills-content">
-                <h2 class="section-title">My Services</h2>
-                <div class="skills-grid">
-                    <div class="skill-card" data-aos="zoom-in"><i class="fas fa-vial"></i><div class="skill-name">Manual<br>Testing</div></div>
-                    <div class="skill-card" data-aos="zoom-in"><i class="fas fa-sync-alt"></i><div class="skill-name">Regression Testing</div></div>
-                    <div class="skill-card" data-aos="zoom-in"><i class="fas fa-search"></i><div class="skill-name">Exploratory Testing</div></div>                    
-                    <div class="skill-card" data-aos="zoom-in"><i class="fas fa-mobile-alt"></i><div class="skill-name">Mobile App Testing</div></div>
-                    <div class="skill-card" data-aos="zoom-in"><i class="fas fa-network-wired"></i><div class="skill-name">API<br> Testing</div></div>
-                    <div class="skill-card" data-aos="zoom-in"><i class="fas fa-tachometer-alt"></i><div class="skill-name">Performance Testing</div></div>
-                    <div class="skill-card" data-aos="zoom-in"><i class="fas fa-database"></i><div class="skill-name">Database <br>Testing</div></div>                    
-                    <div class="skill-card" data-aos="zoom-in"><i class="fas fa-chart-line"></i><div class="skill-name">Bug <br>Reporting</div></div>
-                    <div class="skill-card" data-aos="zoom-in"><i class="fas fa-clipboard-list"></i><div class="skill-name">Test cases <br>Design</div></div>
-                    <div class="skill-card" data-aos="zoom-in"><i class="fas fa-tasks"></i><div class="skill-name">Test Scenarios Design</div></div>                    
+            <div class="section-bg-element bg-element-4"></div>
+            <div class="services-content">
+                <div class="section-header">
+
+                    <div class="title-underline"></div>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card" data-aos="zoom-in">
+                        <div class="service-icon"><i class="fas fa-flask"></i></div>
+                        <div class="service-name">Manual Testing</div>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="service-icon"><i class="fas fa-robot"></i></div>
+                        <div class="service-name">Automation Testing</div>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="service-name">Mobile App Testing</div>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="service-icon"><i class="fas fa-globe"></i></div>
+                        <div class="service-name">Web Testing</div>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="service-icon"><i class="fas fa-database"></i></div>
+                        <div class="service-name">Database Testing</div>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+                        <div class="service-name">API Testing</div>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="service-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="service-name">Performance Testing</div>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="700">
+                        <div class="service-icon"><i class="fas fa-history"></i></div>
+                        <div class="service-name">Regression Testing</div>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="800">
+                        <div class="service-icon"><i class="fas fa-search-location"></i></div>
+                        <div class="service-name">Exploratory Testing</div>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="900">
+                        <div class="service-icon"><i class="fas fa-fire-extinguisher"></i></div>
+                        <div class="service-name">Smoke Testing</div>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="1000">
+                        <div class="service-icon"><i class="fas fa-bug"></i></div>
+                        <div class="service-name">Bug Reporting</div>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="1100">
+                        <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
+                        <div class="service-name">Test Cases Design</div>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="1200">
+                        <div class="service-icon"><i class="fas fa-project-diagram"></i></div>
+                        <div class="service-name">Test Scenarios Design</div>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="1300">
+                        <div class="service-icon"><i class="fas fa-user-edit"></i></div>
+                        <div class="service-name">User Story Creation</div>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="1300">
+                        <div class="service-icon"><i class="fas fa-user-edit"></i></div>
+                        <div class="service-name">Epics Creation</div>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="1400">
+                        <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="service-name">Improvements Suggestion</div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="section contact" id="contact" data-aos="fade-up">
-    <div class="contact-content">
-        <!-- استبدل رابط الصورة دي بصورة تعبر عن قسم الاتصال -->
-        <img src="/assets/Sucess together.jpg" alt="Contact Us" class="contact-image">
-        <div class="contact-info">
-    <h2 class="section-title"> </h2>
-    <h3>Let's Work Together</h3>
-    <p>Have a testing project in mind? I'd love to help you ensure your application delivers the best user experience. Let's discuss how I can contribute to your goals.</p>
-    <div class="contact-items-row">
-    <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:lotfy.galal2@gmail.com" class="contact-link">lotfy.galal2@gmail.com</a></div>
-    <div class="contact-item"><i class="fab fa-whatsapp"></i><a href="https://wa.me/201150764234" target="_blank" rel="noopener noreferrer" class="contact-link">+201150764234</a></div>
-    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Cairo/Sharqia, Egypt</span></div>
-</div>
-    <div class="contact-social-links">
-    <a href="https://github.com/lotfygalal" class="contact-social-link" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/lotfy-galal-b8136015a/" class="contact-social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
-</div>
-        </div>
-    </div>
-</section>
+            <div class="contact-content glass-card">
+                <div class="contact-grid">
+                    <div class="contact-left">
+                        <div class="section-header align-left">
+                            <h2 class="section-title">Let's Work Together</h2>
+                            <div class="title-underline"></div>
+                        </div>
+                        <p>Have a testing project in mind? I'd love to help you ensure your application delivers the
+                            best user experience. Let's discuss how I can contribute to your goals.</p>
+                        <div class="contact-items-column">
+                            <div class="contact-item"><i class="fas fa-envelope"></i><a
+                                    href="mailto:lotfy.galal2@gmail.com" class="contact-link">lotfy.galal2@gmail.com</a>
+                            </div>
+                            <div class="contact-item"><i class="fab fa-whatsapp"></i><a
+                                    href="https://wa.me/201150764234" target="_blank" rel="noopener noreferrer"
+                                    class="contact-link">+201150764234</a></div>
+                            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Cairo, Egypt</span>
+                            </div>
+                        </div>
+                        <div class="social-links-home">
+                            <a href="mailto:lotfy.galal2@gmail.com" class="social-link-home"><i
+                                    class="fas fa-envelope"></i></a>
+                            <a href="https://github.com/lotfygalal" class="social-link-home" target="_blank"><i
+                                    class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/lotfy-galal-b8136015a/" class="social-link-home"
+                                target="_blank"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-right">
+                        <div class="contact-image-wrapper">
+                            <img src="assets/Sucess together.jpg" alt="Contact Us" class="contact-image">
+                            <div class="image-glow"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <div class="modal" id="projectModal">
-    <div class="modal-content" data-aos="zoom-in">
-    <button class="modal-close"><i class="fas fa-times"></i></button>
-    <div class="modal-image-container">
-  <img src="" alt="Project Preview" class="modal-image" id="modalImage">
-</div>
+        <div class="modal-content" data-aos="zoom-in">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="modal-image-container">
+                <img src="" alt="Project Preview" class="modal-image" id="modalImage">
+            </div>
 
-    <div class="modal-controls">
-        <button id="prevImage">&#10094;</button>
-        <button id="nextImage">&#10095;</button>
+            <div class="modal-controls">
+                <button id="prevImage">&#10094;</button>
+                <button id="nextImage">&#10095;</button>
+            </div>
+        </div>
     </div>
-</div>
-
-</div>
-
-    <!-- ربط ملف JS -->
     <script src="js/script.js"></script>
-    <!-- AOS Script (اختياري لو بتستخدم أنيميشن) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({
+            once: true,
+            offset: 50
+        });
     </script>
 </body>
+
 </html>
