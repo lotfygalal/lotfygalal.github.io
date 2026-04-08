@@ -1,296 +1,266 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile menu toggle
+    const pageProgress = document.getElementById('pageProgress');
     const mobileToggle = document.getElementById('mobileToggle');
-    const sidebar = document.getElementById('sidebar');
-
-    mobileToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('open');
-        const icon = mobileToggle.querySelector('i');
-        icon.className = sidebar.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
-    });
-
-    // Navigation and section switching
+    const navMenu = document.querySelector('.nav-menu');
+    const navBar = document.querySelector('.top-nav');
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
+    const typewriter = document.getElementById('typewriter');
+    const sectionTriggers = document.querySelectorAll('[data-go-section]');
+    const modal = document.getElementById('projectModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.querySelector('.modal-close');
+    const prevBtn = document.getElementById('prevImage');
+    const nextBtn = document.getElementById('nextImage');
+    const profileImage = document.getElementById('profileImage');
+    const animatedOrbs = document.querySelectorAll('.site-orb');
+    const sectionOrder = Array.from(sections).map((section) => section.id);
 
-    // Function to show specific section
-    function showSection(targetSection) {
-        sections.forEach(section => section.classList.remove('active'));
-        const sectionToShow = document.getElementById(targetSection);
-        if (sectionToShow) {
-            sectionToShow.classList.add('active');
-            sectionToShow.scrollIntoView({ behavior: 'smooth' });
-        }
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('data-section') === targetSection) {
-                link.classList.add('active');
+    let currentImages = [];
+    let currentIndex = 0;
+    let sectionScrollLocked = false;
+    let touchStartY = null;
+    let wheelIntent = 0;
+    let lastWheelDirection = 0;
+    let lastScrollTop = 0;
+    let suppressScrollNavigationUntil = 0;
+
+    if (typeof VanillaTilt !== 'undefined') {
+        VanillaTilt.init(document.querySelectorAll('.glass-card, .project-card'), {
+            max: 8,
+            speed: 350,
+            glare: true,
+            'max-glare': 0.12,
+            scale: 1.01
+        });
+    }
+
+    function updatePageProgress() {
+        if (!pageProgress) return;
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const width = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        pageProgress.style.width = `${Math.min(width, 100)}%`;
+    }
+
+    function updateNavState() {
+        if (!navBar) return;
+        navBar.classList.toggle('nav-scrolled', window.scrollY > 20);
+    }
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('data-section') === id);
+                });
             }
         });
+    }, { threshold: 0.3 });
+
+    sections.forEach(sec => sectionObserver.observe(sec));
+
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+            const icon = mobileToggle.querySelector('i');
+            icon.className = navMenu.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
+        });
     }
 
-    // Navigation click handlers
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
+    navLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
             const targetSection = link.getAttribute('data-section');
-            showSection(targetSection);
-            sidebar.classList.remove('open');
-            mobileToggle.querySelector('i').className = 'fas fa-bars';
+            const targetEl = document.getElementById(targetSection);
+            if(targetEl) {
+                targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            if (navMenu && navMenu.classList.contains('open')) {
+                navMenu.classList.remove('open');
+                if (mobileToggle) {
+                    mobileToggle.querySelector('i').className = 'fas fa-bars';
+                }
+            }
         });
     });
 
-    // Handle portfolio button in home section
-    document.addEventListener('click', (e) => {
-        if (e.target.closest('a[href="#portfolio"]')) {
-            e.preventDefault();
-            showSection('projects');
+    sectionTriggers.forEach((trigger) => {
+        trigger.addEventListener('click', (event) => {
+            event.preventDefault();
+            const targetSection = trigger.getAttribute('data-go-section');
+            const targetEl = document.getElementById(targetSection);
+            if(targetEl) {
+                targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        const projectLink = event.target.closest('a[href="#projects"]');
+        if (projectLink && !projectLink.classList.contains('nav-link')) {
+            event.preventDefault();
+            const targetEl = document.getElementById('projects');
+            if(targetEl) {
+                targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
         }
     });
 
-    // Typewriter effect
-    const typewriter = document.getElementById('typewriter');
-    const titles = [
-        "Software Testing Engineer",
-        "Freelancer"
-    ];
-    let titleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 100;
+    window.addEventListener('scroll', () => {
+        updatePageProgress();
+        updateNavState();
+    }, { passive: true });
 
-    function type() {
-        const currentTitle = titles[titleIndex];
-        if (isDeleting) {
-            typewriter.textContent = currentTitle.substring(0, charIndex - 1);
-            charIndex--;
-            typingSpeed = 50;
-        } else {
-            typewriter.textContent = currentTitle.substring(0, charIndex + 1);
-            charIndex++;
-            typingSpeed = 100;
-        }
-        if (!isDeleting && charIndex === currentTitle.length) {
-            setTimeout(() => isDeleting = true, 2000);
-        } else if (isDeleting && charIndex === 0) {
+    if (typewriter) {
+        const titles = [
+            'QA Testing Engineer',
+            'Mechatronics Engineer',
+            'Automation Testing Engineer',
+            'Web, Mobile, and API Specialist'
+        ];
+        let titleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentTitle = titles[titleIndex];
+            typewriter.textContent = currentTitle.substring(0, charIndex);
+
+            if (!isDeleting && charIndex < currentTitle.length) {
+                charIndex += 1;
+                setTimeout(type, 85);
+                return;
+            }
+
+            if (!isDeleting && charIndex === currentTitle.length) {
+                isDeleting = true;
+                setTimeout(type, 1800);
+                return;
+            }
+
+            if (isDeleting && charIndex > 0) {
+                charIndex -= 1;
+                setTimeout(type, 40);
+                return;
+            }
+
             isDeleting = false;
             titleIndex = (titleIndex + 1) % titles.length;
+            setTimeout(type, 350);
         }
-        setTimeout(type, typingSpeed);
+
+        setTimeout(type, 700);
     }
 
-    // Start typewriter effect
-    setTimeout(type, 1000);
+    const counters = document.querySelectorAll('.stat-number');
+    const values = [200, 150, 80, 110, 25];
 
-    // Animated counters
-    const counters = document.querySelectorAll(".stat-number");
-    const values = [200, 150, 80, 110, 25]; // Removed Paid Projects value
-
-    counters.forEach((counter, i) => {
-        counter.setAttribute("data-target", values[i]);
-        counter.setAttribute("data-counted", "false");
+    counters.forEach((counter, index) => {
+        counter.dataset.target = values[index];
+        counter.dataset.counted = 'false';
     });
 
-    function animateCounter(el, target) {
+    function animateCounter(element, target) {
         let count = 0;
-        const step = Math.ceil(target / 50);
+        const step = Math.max(1, Math.ceil(target / 38));
         const interval = setInterval(() => {
             count += step;
             if (count >= target) {
-                el.textContent = target + "+";
+                element.textContent = `${target}+`;
+                element.dataset.counted = 'true';
                 clearInterval(interval);
-                el.setAttribute("data-counted", "true");
-            } else {
-                el.textContent = count + "+";
+                return;
             }
-        }, 20);
+            element.textContent = `${count}+`;
+        }, 28);
     }
 
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const el = entry.target;
-                    if (el.getAttribute("data-counted") === "false") {
-                        const target = parseInt(el.getAttribute("data-target"));
-                        animateCounter(el, target);
-                    }
-                }
-            });
-        },
-        { threshold: 0.6 }
-    );
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const element = entry.target;
+            if (element.dataset.counted === 'false') {
+                animateCounter(element, Number(element.dataset.target));
+            }
+        });
+    }, { threshold: 0.45 });
 
     counters.forEach((counter) => observer.observe(counter));
 
-    // Skills card interactions
-    const skillCards = document.querySelectorAll('.skill-card');
-    skillCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            if (!card.hasAttribute('onclick')) {
-                card.style.transform = 'translateY(-5px) scale(1.05)';
-            }
-        });
-        card.addEventListener('mouseleave', () => {
-            if (!card.hasAttribute('onclick')) {
-                card.style.transform = 'translateY(0) scale(1)';
-            }
+    document.querySelectorAll('.open-modal').forEach((link) => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            currentImages = link.getAttribute('data-images').split(',');
+            currentIndex = 0;
+            modalImage.src = currentImages[currentIndex];
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
         });
     });
 
-    // Project Modal with multiple images
-const modal = document.getElementById('projectModal');
-const modalImage = document.getElementById('modalImage');
-const modalClose = document.querySelector('.modal-close');
-const prevBtn = document.getElementById('prevImage');
-const nextBtn = document.getElementById('nextImage');
-let currentImages = [];
-let currentIndex = 0;
-let zoomedIn = false;
-let zoomedInMobile = false;
-let lastTap = 0;
-
-modalImage.addEventListener('touchend', function (e) {
-    const currentTime = new Date().getTime();
-    const tapLength = currentTime - lastTap;
-
-    if (tapLength < 300 && tapLength > 0) {
-        // Double tap detected
-        if (!zoomedInMobile) {
-            modalImage.style.transform = "scale(2)";
-            modalImage.classList.add('zoomed');
-            zoomedInMobile = true;
-        } else {
-            modalImage.style.transform = "scale(1)";
-            modalImage.classList.remove('zoomed');
-            zoomedInMobile = false;
-        }
-        e.preventDefault();
+    function updateModalImage(step) {
+        if (!currentImages.length) return;
+        currentIndex = (currentIndex + step + currentImages.length) % currentImages.length;
+        modalImage.src = currentImages[currentIndex];
     }
-    lastTap = currentTime;
-});
 
-
-modalImage.addEventListener('click', function (e) {
-    const rect = modalImage.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left; // مكان الكليك على X
-    const offsetY = e.clientY - rect.top;  // مكان الكليك على Y
-
-    if (!zoomedIn) {
-        const originX = (offsetX / rect.width) * 100;
-        const originY = (offsetY / rect.height) * 100;
-        modalImage.style.transformOrigin = `${originX}% ${originY}%`;
-        modalImage.style.transform = "scale(2)";
-        modalImage.classList.add('zoomed');
-        zoomedIn = true;
-    } else {
-        modalImage.style.transformOrigin = "center center";
-        modalImage.style.transform = "scale(1)";
-        modalImage.classList.remove('zoomed');
-        zoomedIn = false;
+    function closeModal() {
+        if (!modal) return;
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
     }
-});
 
-function resetZoom() {
-    modalImage.style.transform = "scale(1)";
-    modalImage.style.transformOrigin = "center center";
-    modalImage.classList.remove('zoomed');
-    zoomedIn = false;         // للـ Desktop
-    zoomedInMobile = false;   // للموبايل
-}
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => updateModalImage(-1));
+    }
 
-document.querySelectorAll('.open-modal').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    const images = link.getAttribute('data-images').split(',');
-    currentImages = images;
-    currentIndex = 0;
-    modalImage.src = currentImages[currentIndex];
-    modal.style.display = 'flex';
-    modal.classList.add('open');
-  });
-});
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => updateModalImage(1));
+    }
 
-prevBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-  modalImage.src = currentImages[currentIndex];
-  resetZoom();
-});
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
 
-nextBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % currentImages.length;
-  modalImage.src = currentImages[currentIndex];
-  resetZoom();
-});
+    if (modal) {
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+    }
 
-modalClose.addEventListener('click', () => {
-  modal.style.display = 'none';
-  modal.classList.remove('open');
-  resetZoom();
-});
-
-window.addEventListener('click', (e) => {
-  if (e.target === modal) {
-    modal.style.display = 'none';
-    modal.classList.remove('open');
-    resetZoom();
-  }
-});
-
-// Profile image popup
-const profileImg = document.getElementById("profileImage");
-const popup = document.getElementById("imagePopup");
-const popupImg = document.getElementById("popupImage");
-const closeBtn = document.getElementById("closePopup");
-
-if (profileImg) {
-  profileImg.addEventListener("click", function() {
-    popup.style.display = "block";
-    popupImg.src = this.src;
-  });
-}
-
-if (closeBtn) {
-  closeBtn.addEventListener("click", function() {
-    popup.style.display = "none";
-  });
-}
-
-window.addEventListener("click", function(event) {
-  if (event.target === popup) {
-    popup.style.display = "none";
-  }
-});
-
-
-    // Back to Top Button
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTop.style.display = 'block';
-        } else {
-            backToTop.style.display = 'none';
-        }
+    document.addEventListener('keydown', (event) => {
+        if (!modal || !modal.classList.contains('open')) return;
+        if (event.key === 'Escape') closeModal();
+        if (event.key === 'ArrowLeft') updateModalImage(-1);
+        if (event.key === 'ArrowRight') updateModalImage(1);
     });
 
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    if (profileImage) {
+        profileImage.addEventListener('mousemove', (event) => {
+            const rect = profileImage.getBoundingClientRect();
+            const rotateY = ((event.clientX - rect.left) / rect.width - 0.5) * 7;
+            const rotateX = ((event.clientY - rect.top) / rect.height - 0.5) * -7;
+            profileImage.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+        });
 
-    // Initialize AOS
-    AOS.init({
-        duration: 800,
-        once: true,
-        easing: 'ease-in-out'
-    });
+        profileImage.addEventListener('mouseleave', () => {
+            profileImage.style.transform = '';
+        });
+    }
 
-    // Smooth loading
     document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.3s ease';
+    document.body.style.transition = 'opacity 0.6s ease';
+
     setTimeout(() => {
         document.body.style.opacity = '1';
+        document.body.classList.add('loaded');
     }, 100);
 
-    // Show home section by default
-    showSection('home');
+    updatePageProgress();
+    updateNavState();
 });
