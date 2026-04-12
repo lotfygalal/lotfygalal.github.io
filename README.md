@@ -76,8 +76,6 @@ The portfolio is fully responsive and optimized for:
 - │ └── style.css                             # Styles
 - ├── js/
 - │ └── script.js                             # JavaScript functionality
-- ├── Resume/
-- │ └── Lotfy Galal_CV_SWT_01150764234        # MY Resume
 - ├── assets/
 - │ └── profile.jpg                           # all picture used 
 - └── README.md                               # Project documentation
