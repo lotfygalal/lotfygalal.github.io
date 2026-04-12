@@ -9,51 +9,34 @@
 </p>
 
 <!-- Badges -->
-<!-- Badges -->
 <p align="center">
-
-  <!-- Testing -->
   <img src="https://img.shields.io/badge/Manual%20Testing-007ACC?style=for-the-badge">
   <img src="https://img.shields.io/badge/Automation%20Testing-6A1B9A?style=for-the-badge">
   <img src="https://img.shields.io/badge/API%20Testing-FF6F00?style=for-the-badge&logo=postman&logoColor=white">
-  <img src="https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white">
 
-  <br><br>
-
-  <!-- Programming -->
   <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white">
   <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white">
 
-  <br><br>
+  <img src="https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white">
 
-  <!-- Tools -->
-  <img src="https://img.shields.io/badge/Postman-FF6F00?style=for-the-badge&logo=postman&logoColor=white">
-  <img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white">
-  <img src="https://img.shields.io/badge/Zephyr-20C997?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Trello-0079BF?style=for-the-badge&logo=trello&logoColor=white">
-  <img src="https://img.shields.io/badge/Asana-F06A6A?style=for-the-badge&logo=asana&logoColor=white">
-  <img src="https://img.shields.io/badge/ClickUp-7B68EE?style=for-the-badge&logo=clickup&logoColor=white">
-  <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
-  <img src="https://img.shields.io/badge/IntelliJ-000000?style=for-the-badge&logo=intellijidea&logoColor=white">
-  <img src="https://img.shields.io/badge/DevOps-0A0A0A?style=for-the-badge">
-
-  <br><br>
-
-  <!-- Version Control -->
   <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white">
   <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white">
 
-  <br><br>
-
-  <!-- Collaboration -->
+  <img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white">
+  <img src="https://img.shields.io/badge/Trello-0079BF?style=for-the-badge&logo=trello&logoColor=white">
+  <img src="https://img.shields.io/badge/Asana-F06A6A?style=for-the-badge&logo=asana&logoColor=white">
+  <img src="https://img.shields.io/badge/ClickUp-7B68EE?style=for-the-badge&logo=clickup&logoColor=white">
   <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white">
 
-  <br><br>
+  <img src="https://img.shields.io/badge/Zephyr-20C997?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Postman-FF6F00?style=for-the-badge&logo=postman&logoColor=white">
+  <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
 
-  <!-- Extras -->
+  <img src="https://img.shields.io/badge/DevOps-0A0A0A?style=for-the-badge">
+  <img src="https://img.shields.io/badge/IntelliJ-000000?style=for-the-badge&logo=intellijidea&logoColor=white">
+
   <img src="https://img.shields.io/badge/Comet-FF8C00?style=for-the-badge">
   <img src="https://img.shields.io/badge/Antigravity-8E44AD?style=for-the-badge">
-
 </p>
 
 ---
