@@ -52,12 +52,17 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const id = entry.target.id;
+                
+                // Add active class to section for CSS animations to trigger
+                document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+                entry.target.classList.add('active');
+
                 navLinks.forEach(link => {
                     link.classList.toggle('active', link.getAttribute('data-section') === id);
                 });
             }
         });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.25 });
 
     sections.forEach(sec => sectionObserver.observe(sec));
 
@@ -75,7 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetSection = link.getAttribute('data-section');
             const targetEl = document.getElementById(targetSection);
             if(targetEl) {
-                targetEl.scrollIntoView({ behavior: 'smooth' });
+                if (window.lenis) {
+                    window.lenis.scrollTo(targetEl, { offset: 0, duration: 0.7 });
+                } else {
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                }
             }
 
             if (navMenu && navMenu.classList.contains('open')) {
@@ -93,7 +102,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetSection = trigger.getAttribute('data-go-section');
             const targetEl = document.getElementById(targetSection);
             if(targetEl) {
-                targetEl.scrollIntoView({ behavior: 'smooth' });
+                if (window.lenis) {
+                    window.lenis.scrollTo(targetEl, { offset: 0, duration: 0.7 });
+                } else {
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                }
             }
         });
     });
@@ -104,7 +117,11 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             const targetEl = document.getElementById('projects');
             if(targetEl) {
-                targetEl.scrollIntoView({ behavior: 'smooth' });
+                if (window.lenis) {
+                    window.lenis.scrollTo(targetEl, { offset: 0, duration: 0.7 });
+                } else {
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                }
             }
         }
     });
@@ -259,8 +276,42 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         document.body.style.opacity = '1';
         document.body.classList.add('loaded');
+        
+        // Fix for the skills rotating bug on first load by forcing animation restart
+        setTimeout(() => {
+            document.querySelectorAll('.skill-orbit, .skill-badge').forEach(el => {
+                const anim = el.style.animation;
+                el.style.animation = 'none';
+                void el.offsetWidth; // Force a DOM reflow
+                el.style.animation = anim; 
+            });
+        }, 100);
     }, 100);
 
     updatePageProgress();
     updateNavState();
+
+    // Initialize Lenis smooth scroll
+    if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+            duration: 0.7,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        });
+
+        window.lenis = lenis;
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+    }
 });
