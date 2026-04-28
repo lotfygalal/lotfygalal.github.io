@@ -268,17 +268,15 @@ body::-webkit-scrollbar {
 
 .mobile-menu-toggle {
     display: none;
-    position: fixed;
-    top: 18px;
-    right: 20px;
-    width: 52px;
-    height: 52px;
+    width: 44px;
+    height: 44px;
     border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 16px;
-    background: rgba(11, 22, 34, 0.86);
+    border-radius: 12px;
+    background: transparent;
     color: var(--text);
-    backdrop-filter: blur(14px);
     z-index: 1002;
+    cursor: pointer;
+    font-size: 2rem;
 }
 
 .main-content {
@@ -291,7 +289,7 @@ body::-webkit-scrollbar {
     justify-content: center;
     align-items: flex-start;
     position: relative;
-    min-height: 100vh;
+    min-height: 100svh;
     padding: 11rem 40px 5.2rem;
     overflow: visible;
 }
@@ -1731,23 +1729,35 @@ body.loaded .section.active .home-text>*:nth-child(8) {
     }
 
     .top-nav {
-        left: 12px;
-        right: 12px;
-        width: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        border-radius: 0;
+        border-top: none;
+        border-left: none;
+        border-right: none;
         transform: none;
-        padding: 1.3rem;
+        padding: 1.2rem 1.6rem;
+        transition: none !important;
+        animation: none !important;
     }
 
     .nav-container {
-        align-items: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        transition: none !important;
+        animation: none !important;
     }
 
     .nav-menu {
         display: none;
         width: 100%;
-        margin-top: 5.6rem;
+        margin-top: 1.6rem;
         flex-direction: column;
         gap: 0.6rem;
+        transition: none !important;
+        animation: none !important;
     }
 
     .nav-cv-btn {
@@ -1763,6 +1773,9 @@ body.loaded .section.active .home-text>*:nth-child(8) {
         justify-content: flex-start;
         padding: 1.3rem 1.4rem;
         border-radius: 18px;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
     }
 
     .section {
